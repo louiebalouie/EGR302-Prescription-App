@@ -1,10 +1,14 @@
 package com.example.prescriptionapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import android.view.View;
 
 import android.view.Menu;
@@ -49,4 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void goHome (View v) {
+        startActivity(new Intent(MainActivity.this, MainActivity.class));
+    }
+
+    public void goDrugs (View v) {
+        getSupportFragmentManager().beginTransaction().add(R.id.container, new Drugs()).commit();
+    }
+
 }
