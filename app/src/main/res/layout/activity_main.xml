@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
-        android:layout_marginTop="175px"
+        android:layout_marginTop="200px"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
     <FrameLayout
