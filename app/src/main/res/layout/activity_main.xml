@@ -27,8 +27,8 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="175px"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
     <FrameLayout
@@ -38,21 +38,7 @@
         >
     </FrameLayout>
 
-    <Button
-        android:id="@+id/HomeButton"
-        android:onClick="goHome"
-        android:layout_gravity="bottom|left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home" />
 
-    <Button
-        android:id="@+id/DrugFacts"
-        android:onClick="goDrugs"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Drug Facts" />
 
 
 

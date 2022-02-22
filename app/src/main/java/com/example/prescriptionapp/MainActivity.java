@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.View;
 
@@ -27,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "For help Email: blaked.poulson@calbaptist.edu", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
+        //getSupportFragmentManager().beginTransaction().add(R.id.container, new NavigationFragment()).commit();
     }
 @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,12 +56,21 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     public void goHome (View v) {
-        startActivity(new Intent(MainActivity.this, MainActivity.class));
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new FirstFragment()).commit();
+        //startActivity(new Intent(MainActivity.this, MainActivity.class));
     }
 
     public void goDrugs (View v) {
-        getSupportFragmentManager().beginTransaction().add(R.id.container, new Drugs()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new Drugs()).commit();
     }
 
+    public void goPrescriptions (View v) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new PrescriptionLog()).commit();
+    }
+
+    public void onScan (View v) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new SecondFragment()).commit();
+    }
 }
