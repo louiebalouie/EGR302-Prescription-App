@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.prescriptionapp.R;
 import com.example.prescriptionapp.LoginViewModel;
 import com.example.prescriptionapp.LoginViewModelFactory;
+/*
 import com.example.prescriptionapp.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -158,3 +159,4 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 }
+ */

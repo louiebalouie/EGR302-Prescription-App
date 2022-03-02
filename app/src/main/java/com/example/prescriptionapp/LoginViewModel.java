@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.registrationpage.data.model.LoggedInUser;
+import com.example.prescriptionapp.LoggedInUser;
 
 public class LoginViewModel extends ViewModel {
 
