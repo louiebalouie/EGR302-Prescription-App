@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -163,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             buildTagViews(msgs);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
         }
     }
 
@@ -180,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (UnsupportedEncodingException e) {
             Log.e("UnsupportedEncoding", e.toString());
         }
-        nfc_contents.setText("NFC Content: " + text);
+        nfc_contents.setText(text);
     }
 
     /*
