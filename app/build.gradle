@@ -8,7 +8,7 @@ apply plugin: 'com.google.gms.google-services'
     defaultConfig {
       multiDexEnabled true
       applicationId "com.example.prescriptionapp"
-      minSdkVersion 16
+      minSdkVersion 19
       targetSdkVersion 32
       versionCode 1
       versionName "1.0"

@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.prescriptionapp.FirstFragment"
+        android:name="com.example.prescriptionapp.scanFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first" >
 
