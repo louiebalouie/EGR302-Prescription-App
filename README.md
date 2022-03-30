@@ -4,6 +4,15 @@ Repository for EGR302 Junior Design
 ## Please put all the information of updates here. ***It will be much helpful !!***
 
 -------------------------------------
+-- 2022/3/30 Anthony Moreno  
+
+>>Added Registration Page
+>>Included Additional Fields to the Registration Page (Phone and Name)  
+>>Updated Prescription Log XML to mimic the wireframe
+>>Updated XML
+>>Changes:  
+>>* Added 8 Java files to the application related to the registration page
+>>* Added 2 xml files for the registration page and the prescription log formatting  
 
 -- 2022/3/30 Yutian Yang  
 
