@@ -13,3 +13,11 @@ Repository for EGR302 Junior Design
 >>Changes:  
 >>* Add 1 xml file (custom_button) for style of all the buttons.  
 >>* Changed the fragement_navigation.xml for navbar for all the activites.
+
+-- 2022/3/29 Michael Meenan
+
+>> Created classes for firebase support
+    >> Added User class
+    >> Added Prescription class
+>> Made temprary accessor methods for the login and registration info
+    >> Added temp class within the app folder
