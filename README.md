@@ -1,6 +1,7 @@
 # EGR302-Prescription-App
 Repository for EGR302 Junior Design
 
+--------------------------------
 
 --2022/3/30 Yutian Yang
 
