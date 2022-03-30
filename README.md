@@ -31,7 +31,10 @@ Repository for EGR302 Junior Design
 -- 2022/3/29 Michael Meenan
 
 >> Created classes for firebase support  
+>> Made temprary accessor methods for the login and registration info  
+>> 
+>> Changes:  
+>> 
 >> * Added User class
 >> * Added Prescription class  
->> Made temprary accessor methods for the login and registration info  
 >> * Added temp class within the app folder
