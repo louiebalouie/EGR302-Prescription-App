@@ -11,6 +11,7 @@
         android:id="@+id/textview_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+            android:textSize="16sp"
         android:text="Scanning not Implemented yet SMH"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,14 +20,16 @@
         />
 
     <Button
-        android:id="@+id/button_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/previous"
-        android:onClick="goHome"
-        app:layout_constraintTop_toBottomOf="@id/textview_second"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+            android:id="@+id/button_second"
+            android:layout_width="146dp"
+            android:layout_height="55dp"
+            android:text="@string/previous"
+            android:onClick="goHome"
+            android:textSize="20sp"
+            android:background="@drawable/custom_button"
+            android:textColor="#FFFFFF"
+            app:layout_constraintTop_toBottomOf="@id/textview_second"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

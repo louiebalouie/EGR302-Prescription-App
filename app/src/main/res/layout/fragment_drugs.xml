@@ -7,14 +7,14 @@
     tools:context=".Drugs">
 
     <TextView
-        android:layout_width="237dp"
-        android:layout_height="73dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
-        android:layout_marginBottom="380dp"
-        android:text="Drug information will be stored here"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+            android:textSize="18sp"
+            android:layout_width="289dp"
+            android:layout_height="93dp"
+            android:layout_marginEnd="84dp"
+            android:layout_marginBottom="380dp"
+            android:text="Drug information will be stored here"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,28 +1,20 @@
 package com.example.prescriptionapp;
 
-import static android.nfc.NdefRecord.createMime;
-
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.nfc.FormatException;
 import android.nfc.NdefMessage;
-import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
-import android.nfc.NfcEvent;
 import android.nfc.Tag;
-import android.nfc.tech.Ndef;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.navigation.fragment.NavHostFragment;
 
 import android.os.Parcelable;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 
@@ -32,8 +24,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     public static final String Error_Detected = "No NFC Tag Detected";
@@ -48,10 +40,12 @@ public class MainActivity extends AppCompatActivity {
     TextView edit_message;
     TextView nfc_contents;
     Button ActivateButton;
+    private TextToSpeech tts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -91,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
          */
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        //TODO!!!
         if (nfcAdapter == null) {
             Toast.makeText(this, "This Device does not support NFC", Toast.LENGTH_SHORT).show();
             finish();
@@ -100,6 +95,13 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         tagDetected.addCategory(Intent.CATEGORY_DEFAULT);
         writingTagFilters = new IntentFilter[] {tagDetected};
+        tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int i) {
+                tts.setLanguage(Locale.US);
+                //textToSpeech.setSpeechRate();
+            }
+        });
         //getSupportFragmentManager().beginTransaction().add(R.id.container, new NavigationFragment()).commit();
     }
     @Override
@@ -125,8 +127,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goHome (View v) {
-        //getSupportFragmentManager().beginTransaction().replace(R.id.container, new FirstFragment()).commit();
-        startActivity(new Intent(MainActivity.this, MainActivity.class));
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
+        //startActivity(new Intent(MainActivity.this, MainActivity.class));
     }
 
     public void goDrugs (View v) {
@@ -137,8 +139,18 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new PrescriptionLog()).commit();
     }
 
+    /*
     public void onScan (View v) {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new SecondFragment()).commit();
+    }
+     */
+
+    public void TextToSpeechButton(View v) {
+        if (nfc_contents.getText().toString() != "") {
+            tts.speak(nfc_contents.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+        } else {
+            tts.speak("Nothing has been scanned", TextToSpeech.QUEUE_FLUSH, null);
+        }
     }
 
     private void readfromIntent(Intent intent) {
@@ -153,8 +165,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             buildTagViews(msgs);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
         }
     }
+
 
     private void buildTagViews(NdefMessage[] msgs) {
         if (msgs == null || msgs.length == 0) return;
@@ -169,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (UnsupportedEncodingException e) {
             Log.e("UnsupportedEncoding", e.toString());
         }
-        nfc_contents.setText("NFC Content: " + text);
+        nfc_contents.setText(text);
     }
 
     /*

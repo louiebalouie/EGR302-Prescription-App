@@ -5,28 +5,62 @@
     android:layout_height="match_parent"
     tools:context=".NavigationFragment">
 
-    <Button
-        android:id="@+id/HomeButton"
-        android:onClick="goHome"
-        android:layout_gravity="bottom|left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home" />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#099EFD"
+            android:layout_marginBottom="67dp"
+            android:layout_gravity="bottom|center"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:background="#a7d5f2"
+            android:layout_gravity="bottom"/>
 
     <Button
-        android:id="@+id/DrugFacts"
-        android:onClick="goDrugs"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Drug Facts" />
+            android:id="@+id/HomeButton"
+            android:onClick="goHome"
+            android:layout_gravity="bottom|left"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="20sp"
+            android:background="@drawable/custom_button"
+            android:textColor="#FFFFFF"
+
+            android:text="Home"
+            tools:ignore="RtlHardcoded" />
 
     <Button
-        android:id="@+id/PrescriptionLog"
-        android:onClick="goPrescriptions"
-        android:layout_gravity="bottom|right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Log" />
+            android:id="@+id/DrugFacts"
+            android:onClick="goDrugs"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textSize="20sp"
+            android:background="@drawable/custom_button"
+            android:textColor="#FFFFFF"
+
+            android:text="Drug Facts" />
+
+    <Button
+            android:id="@+id/PrescriptionLog"
+            android:onClick="goPrescriptions"
+            android:layout_gravity="bottom|right"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="20sp"
+
+            android:background="@drawable/custom_button"
+            android:textColor="#FFFFFF"
+
+            android:text="Log"
+            tools:ignore="RtlHardcoded" />
 
 </FrameLayout>
