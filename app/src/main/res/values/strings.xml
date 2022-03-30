@@ -23,4 +23,10 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_scan">ScanActivity</string>
+
+    <!-- Strings related to the Prescription Log -->
+    <string name="Alprazolam">Alprazolam Last Taken at 7:57am (4 hours, 57 minutes ago) Next dose recommended for 11:57am (Can Safely Consume Next Dose)</string>
+    <string name="Lisinopril">Lisinopril Last Taken at 9:20am (2 hours, 37 minutes ago) No additional doses recommended today</string>
+    <string name="Levothyroxine">Levothyroxine Last Taken at 10:40am (1 hour, 17 minutes ago) No additional doses recommended today</string>
+    <string name="Metformin">Metformin Last Taken at 11:40am (17 minutes ago) Next dose recommended for 7:40pm (7 hours, 43 minutes to go)</string>
 </resources>

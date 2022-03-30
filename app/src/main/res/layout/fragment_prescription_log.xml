@@ -3,10 +3,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PrescriptionLog">
+    tools:context=".PrescriptionLogFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200px"
+        android:layout_marginTop="100px"
+        android:text="Prescription Log"
+        android:textColor="@color/colorBlack"
+        android:textSize="70px" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="225px"
+        android:layout_marginTop="200px"
+        android:background="@drawable/back"
+        android:text="@string/Metformin"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="225px"
+        android:layout_marginTop="490px"
+        android:background="@drawable/back"
+        android:text="@string/Levothyroxine"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="225px"
+        android:layout_marginTop="775px"
+        android:background="@drawable/back"
+        android:text="@string/Lisinopril"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="225px"
+        android:layout_marginTop="1075px"
+        android:background="@drawable/back"
+        android:text="@string/Alprazolam"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        />
         android:layout_width="match_parent"
         android:layout_height="match_parent"
             android:textSize="18sp"

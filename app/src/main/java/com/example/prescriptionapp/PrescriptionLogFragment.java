@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link PrescriptionLog#newInstance} factory method to
+ * Use the {@link PrescriptionLogFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PrescriptionLog extends Fragment {
+public class PrescriptionLogFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class PrescriptionLog extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public PrescriptionLog() {
+    public PrescriptionLogFragment() {
         // Required empty public constructor
     }
 
@@ -37,8 +37,8 @@ public class PrescriptionLog extends Fragment {
      * @return A new instance of fragment PrescriptionLog.
      */
     // TODO: Rename and change types and number of parameters
-    public static PrescriptionLog newInstance(String param1, String param2) {
-        PrescriptionLog fragment = new PrescriptionLog();
+    public static PrescriptionLogFragment newInstance(String param1, String param2) {
+        PrescriptionLogFragment fragment = new PrescriptionLogFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

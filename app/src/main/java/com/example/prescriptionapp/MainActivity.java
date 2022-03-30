@@ -132,11 +132,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goDrugs (View v) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new Drugs()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterActivity()).commit();
     }
 
     public void goPrescriptions (View v) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new PrescriptionLog()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new PrescriptionLogFragment()).commit();
     }
 
     /*
