@@ -21,7 +21,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.prescriptionapp.databinding.ActivityRegistrationBinding;
 
-public class RegisterActivity extends Fragment {
+public class RegisterFragment extends Fragment {
 
     private RegistrationViewModel registrationViewModel;
     private ActivityRegistrationBinding binding;

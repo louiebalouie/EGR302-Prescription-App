@@ -3,66 +3,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".PrescriptionLogFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="200px"
-        android:layout_marginTop="100px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
         android:text="Prescription Log"
         android:textColor="@color/colorBlack"
-        android:textSize="70px" />
+        android:textSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
+        android:id="@+id/drug1"
         android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="225px"
-        android:layout_marginTop="200px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="125dp"
         android:background="@drawable/back"
         android:text="@string/Metformin"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title"
         />
 
     <TextView
+        android:id="@+id/drug2"
         android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="225px"
-        android:layout_marginTop="490px"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/drug1"
+        android:layout_marginTop="225dp"
         android:background="@drawable/back"
         android:text="@string/Levothyroxine"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
-        />
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
+        android:id="@+id/drug3"
         android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="225px"
-        android:layout_marginTop="775px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="325dp"
         android:background="@drawable/back"
         android:text="@string/Lisinopril"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/drug2"
         />
 
     <TextView
+        android:id="@+id/drug4"
         android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="225px"
-        android:layout_marginTop="1075px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="425dp"
         android:background="@drawable/back"
         android:text="@string/Alprazolam"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/drug3"
         />
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-            android:textSize="18sp"
-
-            android:layout_marginTop="300dp"
-        android:text="Scanned Prescriptions will be saved here" />
 
 </FrameLayout>
