@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
          */
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        //TODO!!!
         if (nfcAdapter == null) {
             Toast.makeText(this, "This Device does not support NFC", Toast.LENGTH_SHORT).show();
             finish();
