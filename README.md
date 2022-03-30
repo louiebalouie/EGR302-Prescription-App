@@ -3,6 +3,10 @@ Repository for EGR302 Junior Design
 
 ## Please put all the information of updates here. ***It will be much helpful !!***
 
+### 2 parts:
+* Decription of this update  
+* specific changes on the project (files, functions, methods)
+
 -------------------------------------
 -- 2022/3/30 Anthony Moreno  
 
@@ -26,8 +30,8 @@ Repository for EGR302 Junior Design
 
 -- 2022/3/29 Michael Meenan
 
->>* Created classes for firebase support
-    >> Added User class
-    >> Added Prescription class
->>* Made temprary accessor methods for the login and registration info
-    >> Added temp class within the app folder
+>> Created classes for firebase support  
+>> * Added User class
+>> * Added Prescription class  
+>> Made temprary accessor methods for the login and registration info  
+>> * Added temp class within the app folder
