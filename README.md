@@ -8,6 +8,10 @@ Repository for EGR302 Junior Design
 * specific changes on the project (files, functions, methods)
 
 -------------------------------------
+-- 2022/4/6 Blake Poulson
+>>Commented Out NFC code and created new branch titled NoNFC
+>>App can be ran via emulator when compiled from this branch
+
 -- 2022/3/30 Anthony Moreno  
 
 >>Added Registration Page
