@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String Error_Detected = "No NFC Tag Detected";
     public static final String Write_Success = "Text Written Successfully!";
     public static final String Write_Error = "Error during Writing, Try Again!";
-    NfcAdapter nfcAdapter;
+    //NfcAdapter nfcAdapter;
     PendingIntent pendingIntent;
     IntentFilter writingTagFilters[];
     boolean writeMode;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         //edit_message = (TextView) findViewById(R.id.edit_message);
         nfc_contents = (TextView) findViewById(R.id.nfc_contents);
         //ActivateButton =  findViewById(R.id.ActivateButton);
-        context = this;
+        //context = this;
         /*
         ActivateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
          */
+        /*
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         //TODO!!!
         if (nfcAdapter == null) {
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         tagDetected.addCategory(Intent.CATEGORY_DEFAULT);
         writingTagFilters = new IntentFilter[] {tagDetected};
+         */
         tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int i) {
@@ -102,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
                 //textToSpeech.setSpeechRate();
             }
         });
+
+
         //getSupportFragmentManager().beginTransaction().add(R.id.container, new NavigationFragment()).commit();
     }
     @Override
@@ -127,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goHome (View v) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
         //startActivity(new Intent(MainActivity.this, MainActivity.class));
     }
 
@@ -152,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
             tts.speak("Nothing has been scanned", TextToSpeech.QUEUE_FLUSH, null);
         }
     }
-
+/*
     private void readfromIntent(Intent intent) {
         String action = intent.getAction();
         if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action) || NfcAdapter.ACTION_TECH_DISCOVERED.equals(action) || NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
@@ -185,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
         }
         nfc_contents.setText(text);
     }
+    */
 
     /*
     private void write (String text, Tag tag)  throws IOException, FormatException {
@@ -216,6 +221,7 @@ public class MainActivity extends AppCompatActivity {
         return recordNFC;
     }
 */
+    /*
     @Override
     protected void onNewIntent (Intent intent) {
         super.onNewIntent (intent);
@@ -247,4 +253,5 @@ public class MainActivity extends AppCompatActivity {
         writeMode = false;
         nfcAdapter.disableForegroundDispatch(this);
     }
+    */
 }
