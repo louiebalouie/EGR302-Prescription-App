@@ -8,6 +8,9 @@ Repository for EGR302 Junior Design
 * specific changes on the project (files, functions, methods)
 
 -------------------------------------
+-- 2022/4/6 Blake Poulson
+>>Worked on the Prescription Log screen, made the NFC data be output to a file which is then read by the presciption page.
+
 -- 2022/3/30 Anthony Moreno  
 
 >>Added Registration Page
