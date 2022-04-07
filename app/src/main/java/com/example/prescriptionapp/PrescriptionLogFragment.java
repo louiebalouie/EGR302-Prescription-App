@@ -2,11 +2,13 @@ package com.example.prescriptionapp;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,7 +16,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class PrescriptionLogFragment extends Fragment {
-
+TextView drugView1;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,6 +61,19 @@ public class PrescriptionLogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_prescription_log, container, false);
     }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setText(((MainActivity)getActivity()).file);
+    }
+
+    public void setText(String text) {
+        TextView view = (TextView) getView().findViewById(R.id.drug1);
+        view.setText(text);
+    }
+
+
 }

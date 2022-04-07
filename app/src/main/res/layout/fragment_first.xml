@@ -32,4 +32,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="204dp"
+        android:text="Save"
+        android:onClick="SaveButton"
+        android:layout_height="50dp"
+        android:textSize="20sp"
+        android:background="@drawable/custom_button"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="350sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

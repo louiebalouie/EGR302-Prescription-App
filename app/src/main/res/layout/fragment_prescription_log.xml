@@ -27,7 +27,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="125dp"
         android:background="@drawable/back"
-        android:text="@string/Metformin"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
