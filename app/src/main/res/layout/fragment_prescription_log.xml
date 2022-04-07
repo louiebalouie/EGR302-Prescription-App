@@ -43,7 +43,6 @@
         app:layout_constraintTop_toTopOf="@+id/drug1"
         android:layout_marginTop="225dp"
         android:background="@drawable/back"
-        android:text="@string/Levothyroxine"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"/>
@@ -55,7 +54,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="325dp"
         android:background="@drawable/back"
-        android:text="@string/Lisinopril"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +68,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="425dp"
         android:background="@drawable/back"
-        android:text="@string/Alprazolam"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

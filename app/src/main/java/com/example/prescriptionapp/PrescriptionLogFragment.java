@@ -67,11 +67,29 @@ TextView drugView1;
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setText(((MainActivity)getActivity()).file);
+        setText1(((MainActivity)getActivity()).file1);
+        setText2(((MainActivity)getActivity()).file2);
+        setText3(((MainActivity)getActivity()).file3);
+        setText4(((MainActivity)getActivity()).file4);
     }
 
-    public void setText(String text) {
+    public void setText1(String text) {
         TextView view = (TextView) getView().findViewById(R.id.drug1);
+        view.setText(text);
+    }
+
+    public void setText2(String text) {
+        TextView view = (TextView) getView().findViewById(R.id.drug2);
+        view.setText(text);
+    }
+
+    public void setText3(String text) {
+        TextView view = (TextView) getView().findViewById(R.id.drug3);
+        view.setText(text);
+    }
+
+    public void setText4(String text) {
+        TextView view = (TextView) getView().findViewById(R.id.drug4);
         view.setText(text);
     }
 

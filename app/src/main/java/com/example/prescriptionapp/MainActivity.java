@@ -44,12 +44,15 @@ public class MainActivity extends AppCompatActivity {
     TextView nfc_contents;
     Button ActivateButton;
     private TextToSpeech tts;
-    String file;
+    String file1, file2, file3, file4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        file = readfromFile("drugs.txt");
+        file1 = readfromFile("drugs0.txt");
+        file2 = readfromFile("drugs1.txt");
+        file3 = readfromFile("drugs2.txt");
+        file4 = readfromFile("drugs3.txt");
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -160,8 +163,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    int i = 0;
+
     public void SaveButton (View v) {
-        writeToFile("drugs.txt", nfc_contents.getText().toString());
+        String fileName = "drugs.txt";
+        if (readfromFile(fileName) != "" && i < 4) {
+            fileName = "drugs" + i + ".txt";
+            i++;
+            writeToFile(fileName, nfc_contents.getText().toString());
+        } else {
+            fileName = "drugs0.txt";
+            writeToFile(fileName, nfc_contents.getText().toString());
+        }
+        file1 = readfromFile("drugs0.txt");
+        file2 = readfromFile("drugs1.txt");
+        file3 = readfromFile("drugs2.txt");
+        file4 = readfromFile("drugs3.txt");
     }
 
     public void writeToFile (String fileName, String content) {
