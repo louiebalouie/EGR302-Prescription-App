@@ -26,9 +26,9 @@ public class RegistrationViewModel extends ViewModel {
         return loginResult;
     }
 
-    public void login(String username, String username2, String password, String password2, String name, String phone) {
+    public void login(String email, String password, String password2, String name, String phone) {
         // can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = registrationRepository.login(username, username2, password, password2, name, phone);
+        Result<LoggedInUser> result = registrationRepository.login(email, password, password2, name, phone);
 
         if (result instanceof Result.Success) {
             LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
@@ -40,10 +40,8 @@ public class RegistrationViewModel extends ViewModel {
 
 
     // TODO Bug with password matching second password but when either is changed the flag is not removed for register access
-    public void loginDataChanged(String username,String username2, String password, String password2, String name, String phone) {
-        if (!isUserNameValid(username, username2)) {
-            loginFormState.setValue(new RegistrationFormState(R.string.invalid_username,R.string.invalid_username,null, null));
-        }  else if (!isPasswordValid(password,password2)) {
+    public void loginDataChanged(String email, String password, String password2, String name, String phone) {
+         if (!isPasswordValid(password,password2)) {
             loginFormState.setValue(new RegistrationFormState(null, null, R.string.invalid_password,R.string.invalid_password));
         }  else {
             loginFormState.setValue(new RegistrationFormState(true));

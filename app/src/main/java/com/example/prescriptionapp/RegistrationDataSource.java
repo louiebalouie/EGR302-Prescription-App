@@ -10,7 +10,7 @@ import java.io.PrintStream;
  */
 public class RegistrationDataSource {
 
-    public Result<LoggedInUser> login(String username, String username2, String password, String password2, String name, String phone) {
+    public Result<LoggedInUser> login(String email, String password, String password2, String name, String phone) {
 
         try {
 
