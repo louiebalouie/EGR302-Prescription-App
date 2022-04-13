@@ -1,5 +1,7 @@
 package com.example.prescriptionapp;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     Button ActivateButton;
     private TextToSpeech tts;
     String file1, file2, file3, file4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goDrugs (View v) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new EmailPasswordActivity()).commit();
     }
 
     public void goPrescriptions (View v) {
