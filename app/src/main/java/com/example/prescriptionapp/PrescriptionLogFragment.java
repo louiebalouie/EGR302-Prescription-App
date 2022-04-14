@@ -135,7 +135,7 @@ TextView drugView1;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void show_Notification(String text) throws InterruptedException {
+    public void show_Notification(String text) {
 
         if (progress >= 100){
             progress = 0;
@@ -163,7 +163,7 @@ TextView drugView1;
 
     }
 
-    public void startTimer() throws InterruptedException {
+    public void startTimer() {
         while (progress <100){
             progress++;
         }
