@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,7 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterFragment extends AppCompatActivity {
+public class RegisterFragment extends Fragment {
     public static final String TAG = "TAG";
     EditText mFullName,mEmail,mPassword,mPhone,mPassword2;
     Button mRegisterBtn;
@@ -38,25 +39,25 @@ public class RegisterFragment extends AppCompatActivity {
     String userID;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        getActivity().setContentView(R.layout.activity_registration);
 
-        mFullName   = findViewById(R.id.name);
-        mEmail      = findViewById(R.id.email);
-        mPassword   = findViewById(R.id.password);
-        mPassword2   = findViewById(R.id.password2);
-        mPhone      = findViewById(R.id.phone);
-        mRegisterBtn= findViewById(R.id.registerBtn);
-        mLoginBtn   = findViewById(R.id.createText);
+        mFullName   = getActivity().findViewById(R.id.name);
+        mEmail      = getActivity().findViewById(R.id.email);
+        mPassword   = getActivity().findViewById(R.id.password);
+        mPassword2   = getActivity().findViewById(R.id.password2);
+        mPhone      = getActivity().findViewById(R.id.phone);
+        mRegisterBtn= getActivity().findViewById(R.id.registerBtn);
+        mLoginBtn   = getActivity().findViewById(R.id.createText);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        progressBar = findViewById(R.id.loading);
+        progressBar = getActivity().findViewById(R.id.loading);
 
         if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            finish();
+            startActivity(new Intent(getActivity().getApplicationContext(),MainActivity.class));
+//            getActivity().finish();
         }
 
 
@@ -104,7 +105,7 @@ public class RegisterFragment extends AppCompatActivity {
                             fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(RegisterFragment.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity().getApplicationContext(), "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -113,7 +114,7 @@ public class RegisterFragment extends AppCompatActivity {
                                 }
                             });
 
-                            Toast.makeText(RegisterFragment.this, "User Created.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity().getApplicationContext(), "User Created.", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fStore.collection("users").document(userID);
                             Map<String,Object> user = new HashMap<>();
@@ -131,10 +132,10 @@ public class RegisterFragment extends AppCompatActivity {
                                     Log.d(TAG, "onFailure: " + e.toString());
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(RegisterFragment.this.getContext(),MainActivity.class));
 
                         }else {
-                            Toast.makeText(RegisterFragment.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity().getApplicationContext(), "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
@@ -144,12 +145,12 @@ public class RegisterFragment extends AppCompatActivity {
 
 
 
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-            }
-        });
+//        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(RegisterFragment.this.getContext(),LoginActivity.class));
+//            }
+//        });
 
     }
 }

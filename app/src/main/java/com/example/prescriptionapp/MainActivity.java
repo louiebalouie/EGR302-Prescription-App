@@ -14,6 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import android.os.Parcelable;
 import android.speech.tts.TextToSpeech;
@@ -145,7 +146,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goDrugs (View v) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new EmailPasswordActivity()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterFragment()).commit();
+
     }
 
     public void goPrescriptions (View v) {

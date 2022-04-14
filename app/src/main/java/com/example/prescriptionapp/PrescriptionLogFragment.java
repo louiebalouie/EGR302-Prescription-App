@@ -31,6 +31,7 @@ TextView drugView1;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private int progress = 0;
+    private int max = 100;
     private int id = 1;
 
     // TODO: Rename and change types of parameters
@@ -136,6 +137,11 @@ TextView drugView1;
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void show_Notification(String text) throws InterruptedException {
 
+        if (progress >= 100){
+            progress = 0;
+            max = 0;
+        }
+
         Intent intent=new Intent(this.getContext(),MainActivity.class);
         String CHANNEL_ID="MYCHANNEL";
         NotificationChannel notificationChannel=new NotificationChannel(CHANNEL_ID,"name", NotificationManager.IMPORTANCE_HIGH);
@@ -145,9 +151,11 @@ TextView drugView1;
                 .setContentTitle("Prescription Reminder")
                 .setContentIntent(pendingIntent)
                 .addAction(android.R.drawable.sym_action_chat,"Okay",pendingIntent)
-                .setChannelId(CHANNEL_ID).setProgress(100,progress+10,false)
-                .setSmallIcon(android.R.drawable.ic_dialog_alert).setColor(025)
+                .setChannelId(CHANNEL_ID).setProgress(max,progress+=10,false)
+                .setSmallIcon(android.R.drawable.ic_dialog_alert).setColor(22222).setColorized(true)
                 .build();
+
+
 
         NotificationManager notificationManager=(NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.createNotificationChannel(notificationChannel);

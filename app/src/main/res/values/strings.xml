@@ -12,7 +12,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Create Username</string>
+    <string name="prompt_email">Confirm Email</string>
     <string name="prompt_email2">Confirm Username</string>
     <string name="prompt_password">Create Password</string>
     <string name="prompt_password2">Confirm Password</string>
