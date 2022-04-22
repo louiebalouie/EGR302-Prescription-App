@@ -44,10 +44,10 @@ public class RegisterFragment extends Fragment {
     String userID;
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_registration, container, false);
-    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        return inflater.inflate(R.layout.activity_registration, container, false);
+//    } duplicated fields from applying a layout
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class RegisterFragment extends Fragment {
         final EditText mEmail      = binding.email;
         final EditText mPassword   = binding.password;
         final EditText mPassword2   = binding.password2;
-        final EditText phone      = binding.phone;
+        final EditText mPhone      = binding.phone;
         final Button mRegisterBtn= binding.registerBtn;
 
 
@@ -85,7 +85,7 @@ public class RegisterFragment extends Fragment {
                 String password = mPassword.getText().toString().trim();
                 String password2 = mPassword2.getText().toString().trim();
                 final String fullName = mFullName.getText().toString();
-//                final String phone    = mPhone.getText().toString();
+                final String phone    = mPhone.getText().toString();
 
                 if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email is Required.");

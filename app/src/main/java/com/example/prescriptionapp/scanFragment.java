@@ -32,6 +32,7 @@ import java.io.UnsupportedEncodingException;
 public class scanFragment extends Fragment {
     TextView nfc_contents2;
     String nfcContent;
+    TextView nfcTagText;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -40,8 +41,10 @@ public class scanFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_first, container, false);
         nfc_contents2 = (TextView) view.findViewById(R.id.nfc_contents2);
+        nfcTagText = (TextView) view.findViewById(R.id.textout);
         nfcContent = ((MainActivity)getActivity()).nfc_contents.getText().toString();
         nfc_contents2.setText(nfcContent);
+        nfcTagText.setText("Save the contents of the scanned NFC Tag?");
         displayTag();
         return view;
     }

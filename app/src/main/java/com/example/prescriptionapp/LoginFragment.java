@@ -4,7 +4,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -14,7 +16,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import com.example.prescriptionapp.databinding.ActivityLoginBinding;
+import com.example.prescriptionapp.databinding.ActivityRegistrationBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,7 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginFragment extends Fragment {
     EditText mEmail,mPassword;
     Button mLoginBtn;
     TextView mCreateBtn,forgotTextLink;
@@ -30,18 +35,28 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+    private ActivityLoginBinding bindRoot;
 
-        mEmail = findViewById(R.id.Email);
-        mPassword = findViewById(R.id.password);
-        progressBar = findViewById(R.id.progressBar);
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        return inflater.inflate(R.layout.activity_login, container, false);
+//    } duplicated fields from applying a layout
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        bindRoot = ActivityLoginBinding.inflate(getLayoutInflater());
+
+        //Error on this line
+        getActivity().setContentView(bindRoot.getRoot());
+
+        mEmail = bindRoot.Email;
+        mPassword = bindRoot.password;
+        progressBar = getActivity().findViewById(R.id.progressBar);
         fAuth = FirebaseAuth.getInstance();
-        mLoginBtn = findViewById(R.id.loginBtn);
-        mCreateBtn = findViewById(R.id.createText);
-        forgotTextLink = findViewById(R.id.forgotPassword);
+        mLoginBtn = bindRoot.loginBtn;
+        mCreateBtn = bindRoot.createText;
+        forgotTextLink = bindRoot.forgotPassword;
 
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -74,10 +89,10 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            Toast.makeText(getActivity().getApplicationContext(), "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getActivity().getApplicationContext(),MainActivity.class));
                         }else {
-                            Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity().getApplicationContext(), "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
 
@@ -90,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RegisterFragment.class));
+                startActivity(new Intent(getActivity().getApplicationContext(),RegisterFragment.class));
             }
         });
 
@@ -112,12 +127,12 @@ public class LoginActivity extends AppCompatActivity {
                         fAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(LoginActivity.this, "Reset Link Sent To Your Email.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity().getApplicationContext(), "Reset Link Sent To Your Email.", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(LoginActivity.this, "Error ! Reset Link is Not Sent" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity().getApplicationContext(), "Error ! Reset Link is Not Sent" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
 

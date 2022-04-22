@@ -12,9 +12,10 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 
 import android.os.Parcelable;
 import android.speech.tts.TextToSpeech;
@@ -48,17 +49,24 @@ public class MainActivity extends AppCompatActivity {
     Button ActivateButton;
     private TextToSpeech tts;
     String file1, file2, file3, file4;
+    FirebaseAuth fAuth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        fAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         file1 = readfromFile("drugs0.txt");
         file2 = readfromFile("drugs1.txt");
         file3 = readfromFile("drugs2.txt");
         file4 = readfromFile("drugs3.txt");
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
-        setContentView(R.layout.activity_main);
+        if(fAuth.getCurrentUser() != null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
+            setContentView(R.layout.activity_main);
+        }
+        else {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterFragment()).commit();
+        setContentView(R.layout.activity_main);}
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
        FloatingActionButton fab = findViewById(R.id.fab);
@@ -146,7 +154,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goDrugs (View v) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterFragment()).commit();
+        fAuth.signOut();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new LoginFragment()).commit();
 
     }
 
