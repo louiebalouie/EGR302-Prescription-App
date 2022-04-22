@@ -36,11 +36,10 @@ public class LoginFragment extends Fragment {
 
 
     private ActivityLoginBinding bindRoot;
-
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.activity_login, container, false);
-//    } duplicated fields from applying a layout
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_login, container, false);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +48,7 @@ public class LoginFragment extends Fragment {
 
         //Error on this line
         getActivity().setContentView(bindRoot.getRoot());
+
 
         mEmail = bindRoot.Email;
         mPassword = bindRoot.password;
@@ -105,7 +105,8 @@ public class LoginFragment extends Fragment {
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity().getApplicationContext(),RegisterFragment.class));
+                fAuth.signOut();
+                //startActivity(new Intent(getActivity().getApplicationContext(),RegisterFragment.class));
             }
         });
 

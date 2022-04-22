@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
         }
         else {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new LoginFragment()).commit();
         setContentView(R.layout.activity_main);}
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -156,7 +156,11 @@ public class MainActivity extends AppCompatActivity {
     public void goDrugs (View v) {
         fAuth.signOut();
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new LoginFragment()).commit();
+    }
 
+    public void goRegister (View v) {
+        fAuth.signOut();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterFragment()).commit();
     }
 
     public void goPrescriptions (View v) {

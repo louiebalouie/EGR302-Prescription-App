@@ -44,10 +44,7 @@ public class RegisterFragment extends Fragment {
     String userID;
 
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.activity_registration, container, false);
-//    } duplicated fields from applying a layout
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
