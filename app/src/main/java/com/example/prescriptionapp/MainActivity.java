@@ -10,12 +10,19 @@ import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.os.Bundle;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Parcelable;
 import android.speech.tts.TextToSpeech;
@@ -25,6 +32,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,27 +58,30 @@ public class MainActivity extends AppCompatActivity {
     Button ActivateButton;
     private TextToSpeech tts;
     String file1, file2, file3, file4;
-    FirebaseAuth fAuth;
+    String UID = "1";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        fAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         file1 = readfromFile("drugs0.txt");
         file2 = readfromFile("drugs1.txt");
         file3 = readfromFile("drugs2.txt");
         file4 = readfromFile("drugs3.txt");
-        if(fAuth.getCurrentUser() != null){
+
+        if(UID != ""){
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
             setContentView(R.layout.activity_main);
         }
         else {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new LoginFragment()).commit();
         setContentView(R.layout.activity_main);}
+
+//        getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
+        setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-       FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //getSupportFragmentManager().beginTransaction().add(R.id.container, new NavigationFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, new NavigationFragment()).commit();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -148,18 +160,21 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void loginButton (View v) {
+        startActivity(new Intent(MainActivity.this, MainActivity.class));
+        //getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
+    }
+
     public void goHome (View v) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
-        //startActivity(new Intent(MainActivity.this, MainActivity.class));
+        //getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
+        startActivity(new Intent(MainActivity.this, MainActivity.class));
     }
 
     public void goDrugs (View v) {
-        fAuth.signOut();
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new LoginFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterFragment()).commit();
     }
 
     public void goRegister (View v) {
-        fAuth.signOut();
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterFragment()).commit();
     }
 

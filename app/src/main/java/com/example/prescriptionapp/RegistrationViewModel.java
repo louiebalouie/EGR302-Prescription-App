@@ -41,7 +41,7 @@ public class RegistrationViewModel extends ViewModel {
 
     // TODO Bug with password matching second password but when either is changed the flag is not removed for register access
     public void loginDataChanged(String email, String password, String password2, String name, String phone) {
-         if (!isPasswordValid(password,password2)) {
+        if (!isPasswordValid(password,password2)) {
             loginFormState.setValue(new RegistrationFormState(null, null, R.string.invalid_password,R.string.invalid_password));
         }  else {
             loginFormState.setValue(new RegistrationFormState(true));

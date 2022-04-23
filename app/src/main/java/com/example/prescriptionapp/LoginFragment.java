@@ -33,6 +33,7 @@ public class LoginFragment extends Fragment {
     TextView mCreateBtn,forgotTextLink;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
+    String UID;
 
 
     private ActivityLoginBinding bindRoot;
@@ -63,8 +64,8 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
+                String email = "Tony@toy.com";//mEmail.getText().toString().trim();
+                String password = "Password";//mPassword.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email is Required.");
@@ -89,10 +90,12 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(getActivity().getApplicationContext(), "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                            UID = fAuth.getUid();
                             startActivity(new Intent(getActivity().getApplicationContext(),MainActivity.class));
                         }else {
-                            Toast.makeText(getActivity().getApplicationContext(), "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getContext(), "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getActivity().getApplicationContext(),MainActivity.class));
                             progressBar.setVisibility(View.GONE);
                         }
 
@@ -106,7 +109,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fAuth.signOut();
-                //startActivity(new Intent(getActivity().getApplicationContext(),RegisterFragment.class));
+                                                                                                                                                                                                                                                                                             startActivity(new Intent(getActivity().getApplicationContext(),RegisterFragment.class));
             }
         });
 
@@ -133,7 +136,7 @@ public class LoginFragment extends Fragment {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getActivity().getApplicationContext(), "Error ! Reset Link is Not Sent" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Error ! Reset Link is Not Sent" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
 
