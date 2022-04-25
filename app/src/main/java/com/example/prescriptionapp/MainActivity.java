@@ -69,16 +69,17 @@ public class MainActivity extends AppCompatActivity {
         file2 = readfromFile("drugs1.txt");
         file3 = readfromFile("drugs2.txt");
         file4 = readfromFile("drugs3.txt");
-
+        /*
         if(fuser == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new LoginFragment()).commit();
             setContentView(R.layout.activity_main);
         }
         else {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
-        setContentView(R.layout.activity_main);}
-
-//        getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
+        setContentView(R.layout.activity_main);
+        }
+        */
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -173,14 +174,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void goDrugs (View v) {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new LoginFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, new NavigationFragment()).commit();
     }
 
     public void goRegister (View v) {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, new NavigationFragment()).commit();
     }
 
     public void goPrescriptions (View v) {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new PrescriptionLogFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, new NavigationFragment()).commit();
     }
 
     /*
@@ -254,6 +258,7 @@ public class MainActivity extends AppCompatActivity {
             }
             buildTagViews(msgs);
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.container, new NavigationFragment()).commit();
         }
     }
 
