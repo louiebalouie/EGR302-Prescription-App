@@ -36,13 +36,13 @@
 
     <Button
         android:id="@+id/DrugFacts"
-        android:layout_width="160dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="10dp"
         android:background="@drawable/custom_button"
         android:onClick="goDrugs"
-        android:text="Registration"
+        android:text="Login"
         android:textColor="#FFFFFF"
 
         android:textSize="20sp" />
