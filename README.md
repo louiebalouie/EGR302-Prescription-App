@@ -8,6 +8,15 @@ Repository for EGR302 Junior Design
 * specific changes on the project (files, functions, methods)
 
 -------------------------------------
+
+-- 2022/4/22 Anthony Moreno  
+
+>>Added Registration Page
+>>Updated XML for Scan Page
+>>Changes:  
+>>* Registration Page no longer duplicates fieldss
+>>* Updated XMLs and identifying bugs  
+
 -- 2022/4/6 Blake Poulson
 >>Worked on the Prescription Log screen, made the NFC data be output to a file which is then read by the presciption page.
 
