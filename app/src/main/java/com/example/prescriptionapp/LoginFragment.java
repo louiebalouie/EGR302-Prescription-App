@@ -1,9 +1,12 @@
 package com.example.prescriptionapp;
 
+import static com.example.prescriptionapp.RegisterFragment.TAG;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,13 +29,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginFragment extends Fragment {
-    EditText mEmail,mPassword;
-    Button mLoginBtn;
+    private EditText mEmail,mPassword;
+    private Button mLoginBtn;
     TextView mCreateBtn,forgotTextLink;
-    ProgressBar progressBar;
-    FirebaseAuth fAuth;
+    private ProgressBar progressBar;
+    private FirebaseAuth fAuth;
+
     String UID;
 
 
@@ -44,6 +49,10 @@ public class LoginFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+
+        fAuth = FirebaseAuth.getInstance();
+        //fAuth.signOut();
         super.onCreate(savedInstanceState);
         bindRoot = ActivityLoginBinding.inflate(getLayoutInflater());
 
@@ -51,21 +60,18 @@ public class LoginFragment extends Fragment {
         getActivity().setContentView(bindRoot.getRoot());
 
 
-        mEmail = bindRoot.Email;
-        mPassword = bindRoot.password;
+        final EditText mEmail = bindRoot.Email;
+        final EditText mPassword = bindRoot.password;
         progressBar = getActivity().findViewById(R.id.progressBar);
-        fAuth = FirebaseAuth.getInstance();
-        mLoginBtn = bindRoot.loginBtn;
-        mCreateBtn = bindRoot.createText;
-        forgotTextLink = bindRoot.forgotPassword;
-
+        final Button mLoginBtn = bindRoot.loginBtn;
+        final TextView mCreateBtn = bindRoot.createText;
+        final TextView forgotTextLink = bindRoot.forgotPassword;
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String email = "Tony@toy.com";//mEmail.getText().toString().trim();
-                String password = "Password";//mPassword.getText().toString().trim();
+                final String email = mEmail.getText().toString().trim();
+                String password = mPassword.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email is Required.");
@@ -84,19 +90,31 @@ public class LoginFragment extends Fragment {
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                // authenticate the user
+                 //authenticate the user
 
                 fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(getContext(), "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            UID = fAuth.getUid();
-                            startActivity(new Intent(getActivity().getApplicationContext(),MainActivity.class));
-                        }else {
+//                        if(task.isSuccessful()){
+//                            Toast.makeText(getContext(), "Logged in Successfully", Toast.LENGTH_SHORT).show();
+//                            UID = fAuth.getUid();
+//                            startActivity(new Intent(getActivity().getApplicationContext(),MainActivity.class));
+//                        }else {
 //                            Toast.makeText(getContext(), "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                            startActivity(new Intent(getActivity().getApplicationContext(),MainActivity.class));
+//                            progressBar.setVisibility(View.GONE);
+//                        }
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+                            Toast.makeText(getActivity().getApplicationContext(), "Sign in Worked",
+                                    Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getActivity().getApplicationContext(),MainActivity.class));
-                            progressBar.setVisibility(View.GONE);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(getActivity().getApplicationContext(), "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -104,6 +122,8 @@ public class LoginFragment extends Fragment {
 
             }
         });
+
+
 
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override

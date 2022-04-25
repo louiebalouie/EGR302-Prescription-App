@@ -15,7 +15,7 @@
         android:layout_width="200sp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aclonica"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:hint="Scanned Content Will Appear Here"
         android:textColorHint="#FFFFFF"
         android:layout_marginTop="2sp"

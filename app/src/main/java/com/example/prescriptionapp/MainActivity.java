@@ -58,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
     Button ActivateButton;
     private TextToSpeech tts;
     String file1, file2, file3, file4;
-    String UID = "1";
+//    FirebaseAuth fAuth = FirebaseAuth.getInstance();
+    FirebaseUser fuser = FirebaseAuth.getInstance().getCurrentUser();
 
 
     @Override
@@ -69,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
         file3 = readfromFile("drugs2.txt");
         file4 = readfromFile("drugs3.txt");
 
-        if(UID != ""){
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
+        if(fuser == null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new LoginFragment()).commit();
             setContentView(R.layout.activity_main);
         }
         else {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new LoginFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
         setContentView(R.layout.activity_main);}
 
 //        getSupportFragmentManager().beginTransaction().replace(R.id.container, new scanFragment()).commit();
@@ -171,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goDrugs (View v) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new LoginFragment()).commit();
     }
 
     public void goRegister (View v) {
